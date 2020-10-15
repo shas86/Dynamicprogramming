@@ -1,0 +1,28 @@
+public class Solution {
+    public int solve(int A) {
+        int a[]=new int[A+1];
+        
+        int n=ways(A,a);
+        n=n%10003;
+        return n;
+    }
+    int ways(int A,int a[])
+    {
+        if(A<=2)
+        return A;
+        if(a[A]!=0)
+        return a[A];
+        else
+        {
+            a[A]=ways(A-1,a)%10003+((A-1)*ways(A-2,a)%10003)%10003;
+        }
+        return a[A];
+        
+    }
+    public static void main(String args[])
+    {
+    Solution s=new Solution();
+    int pairs=s.solve(19);
+    System.out.println(pairs);
+    }
+}
